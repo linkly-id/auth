@@ -11,9 +11,9 @@ import (
 	"github.com/gobuffalo/pop/v6"
 	"github.com/gobuffalo/pop/v6/columns"
 	"github.com/jmoiron/sqlx"
+	"github.com/linkly-id/auth/internal/conf"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/conf"
 )
 
 // Connection is the interface a storage provider must implement.
@@ -33,7 +33,7 @@ func Dial(config *conf.GlobalConfiguration) (*Connection, error) {
 
 	driver := ""
 	if config.DB.Driver != "postgres" {
-		logrus.Warn("DEPRECATION NOTICE: only PostgreSQL is supported by Supabase's GoTrue, will be removed soon")
+		logrus.Warn("DEPRECATION NOTICE: only PostgreSQL is supported by Linkly's GoTrue, will be removed soon")
 	} else {
 		// pop v5 uses pgx as the default PostgreSQL driver
 		driver = "pgx"

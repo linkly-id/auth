@@ -14,10 +14,10 @@ import (
 	"time"
 
 	"github.com/gofrs/uuid"
+	"github.com/linkly-id/auth/internal/api"
+	"github.com/linkly-id/auth/internal/e2e"
+	"github.com/linkly-id/auth/internal/models"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/api"
-	"github.com/supabase/auth/internal/e2e"
-	"github.com/supabase/auth/internal/models"
 )
 
 func TestInstance(t *testing.T) {

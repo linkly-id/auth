@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/utilities"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/utilities"
 	"golang.org/x/oauth2"
 )
 

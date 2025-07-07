@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/supabase/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/conf"
 	"golang.org/x/oauth2"
 )
 

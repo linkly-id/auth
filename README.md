@@ -1,9 +1,9 @@
-# Auth - Authentication and User Management by Supabase
+# Auth - Authentication and User Management by linkly
 
-[![Coverage Status](https://coveralls.io/repos/github/supabase/auth/badge.svg?branch=master)](https://coveralls.io/github/supabase/auth?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/linkly-id/auth/badge.svg?branch=master)](https://coveralls.io/github/linkly-id/auth?branch=master)
 
 Auth is a user management and authentication server written in Go that powers
-[Supabase](https://supabase.com)'s features such as:
+[linkly](https://linkly.id)'s features such as:
 
 - Issuing JWTs
 - Row Level Security with PostgREST
@@ -31,8 +31,8 @@ Create a `.env` file to store your own custom env vars. See [`example.env`](exam
 2. Build the auth binary: `make build` . You should see an output like this:
 
 ```bash
-go build -ldflags "-X github.com/supabase/auth/cmd.Version=`git rev-parse HEAD`"
-GOOS=linux GOARCH=arm64 go build -ldflags "-X github.com/supabase/auth/cmd.Version=`git rev-parse HEAD`" -o gotrue-arm64
+go build -ldflags "-X github.com/linkly-id/auth/cmd.Version=`git rev-parse HEAD`"
+GOOS=linux GOARCH=arm64 go build -ldflags "-X github.com/linkly-id/auth/cmd.Version=`git rev-parse HEAD`" -o gotrue-arm64
 ```
 
 3. Execute the auth binary: `./auth`
@@ -49,13 +49,13 @@ Create a `.env.docker` file to store your own custom env vars. See [`example.doc
 ## Running in production
 
 Running an authentication server in production is not an easy feat. We
-recommend using [Supabase Auth](https://supabase.com/auth) which gets regular
+recommend using [Linkly Auth](https://linkly.id/auth) which gets regular
 security updates.
 
 Otherwise, please make sure you setup a process to promptly update to the
 latest version. You can do that by following this repository, specifically the
-[Releases](https://github.com/supabase/auth/releases) and [Security
-Advisories](https://github.com/supabase/auth/security/advisories) sections.
+[Releases](https://github.com/linkly-id/auth/releases) and [Security
+Advisories](https://github.com/linkly-id/auth/security/advisories) sections.
 
 ### Backward compatibility
 
@@ -136,7 +136,7 @@ previous versions.
 ### Inherited features
 
 Certain inherited features from the Netlify codebase are not supported by
-Supabase and they may be removed without prior notice in the future. This is a
+Linkly and they may be removed without prior notice in the future. This is a
 comprehensive list of those features:
 
 1. Multi-tenancy via the `instances` table i.e. `GOTRUE_MULTI_INSTANCE_MODE`
@@ -798,7 +798,7 @@ body:
   "data": {
     ...
   }, // only if type = signup
-  "redirect_to": "https://supabase.io" // Redirect URL to send the user to after an email action. Defaults to SITE_URL.
+  "redirect_to": "https://linkly.id" // Redirect URL to send the user to after an email action. Defaults to SITE_URL.
 
 }
 ```
@@ -902,7 +902,7 @@ returns:
 ### **POST /invite**
 
 Invites a new user with an email.
-This endpoint requires the `service_role` or `supabase_admin` JWT set as an Auth Bearer header:
+This endpoint requires the `service_role` or `linkly_admin` JWT set as an Auth Bearer header:
 
 e.g.
 
@@ -963,7 +963,7 @@ Verify a phone signup or sms otp. Type should be set to `sms`.
 {
   "type": "sms",
   "token": "confirmation-otp-delivered-in-sms",
-  "redirect_to": "https://supabase.io",
+  "redirect_to": "https://linkly.id",
   "phone": "phone-number-sms-otp-was-delivered-to"
 }
 ```
@@ -990,7 +990,7 @@ query params:
 {
   "type": "signup",
   "token": "confirmation-code-delivered-in-email",
-  "redirect_to": "https://supabase.io"
+  "redirect_to": "https://linkly.id"
 }
 ```
 
@@ -1219,7 +1219,7 @@ scopes=<optional additional scopes depending on the provider (email and name are
 
 Redirects to provider and then to `/callback`
 
-For apple specific setup see: <https://github.com/supabase/auth#apple-oauth>
+For apple specific setup see: <https://github.com/linkly-id/auth#apple-oauth>
 
 ### **GET /callback**
 

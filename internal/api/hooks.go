@@ -5,11 +5,11 @@ import (
 	"strings"
 
 	"github.com/fatih/structs"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/hooks/v0hooks"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/api/provider"
+	"github.com/linkly-id/auth/internal/hooks/v0hooks"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/storage"
 )
 
 func (a *API) triggerBeforeUserCreated(

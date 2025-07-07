@@ -1,8 +1,8 @@
 {
   "name": "Gotrue",
   "description": "",
-  "website": "https://www.gotrueapi.org",
-  "repository": "https://github.com/supabase/gotrue",
+  "website": "https://linkly.id",
+  "repository": "https://github.com/linkly-id/auth",
   "env": {
     "DATABASE_URL": {},
     "GOTRUE_DB_DRIVER": {

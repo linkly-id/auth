@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/crypto"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/crypto"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/storage"
 )
 
 // MagicLinkParams holds the parameters for a magic link request

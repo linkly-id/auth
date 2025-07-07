@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/supabase/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/conf"
 )
 
 func Example_newBurstLimiter() {

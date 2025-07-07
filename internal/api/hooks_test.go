@@ -6,15 +6,15 @@ import (
 
 	"net/http/httptest"
 
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/hooks/hookserrors"
+	"github.com/linkly-id/auth/internal/hooks/v0hooks"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/storage"
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/hooks/hookserrors"
-	"github.com/supabase/auth/internal/hooks/v0hooks"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
 
 	"gopkg.in/h2non/gock.v1"
 )

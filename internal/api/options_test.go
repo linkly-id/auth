@@ -3,8 +3,8 @@ package api
 import (
 	"testing"
 
+	"github.com/linkly-id/auth/internal/conf"
 	"github.com/stretchr/testify/assert"
-	"github.com/supabase/auth/internal/conf"
 )
 
 func TestNewLimiterOptions(t *testing.T) {

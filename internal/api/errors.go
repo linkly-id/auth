@@ -8,10 +8,10 @@ import (
 	"runtime/debug"
 	"time"
 
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/observability"
+	"github.com/linkly-id/auth/internal/utilities"
 	"github.com/pkg/errors"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/utilities"
 )
 
 // Common error messages during signup flow

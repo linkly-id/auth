@@ -7,8 +7,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/models"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/models"
 )
 
 type MailRequest struct {

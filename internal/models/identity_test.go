@@ -4,11 +4,11 @@ import (
 	"testing"
 
 	"github.com/gofrs/uuid"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/storage/test"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/storage/test"
 )
 
 type IdentityTestSuite struct {
@@ -36,7 +36,7 @@ func TestIdentity(t *testing.T) {
 }
 
 func (ts *IdentityTestSuite) TestNewIdentity() {
-	u := ts.createUserWithEmail("test@supabase.io")
+	u := ts.createUserWithEmail("test@linkly.io")
 	ts.Run("Test create identity with no provider id", func() {
 		identityData := map[string]interface{}{}
 		_, err := NewIdentity(u, "email", identityData)
@@ -52,7 +52,7 @@ func (ts *IdentityTestSuite) TestNewIdentity() {
 }
 
 func (ts *IdentityTestSuite) TestFindUserIdentities() {
-	u := ts.createUserWithIdentity("test@supabase.io")
+	u := ts.createUserWithIdentity("test@linkly.io")
 	identities, err := FindIdentitiesByUserID(ts.db, u.ID)
 	require.NoError(ts.T(), err)
 
@@ -61,7 +61,7 @@ func (ts *IdentityTestSuite) TestFindUserIdentities() {
 }
 
 func (ts *IdentityTestSuite) TestUpdateIdentityData() {
-	u := ts.createUserWithIdentity("test@supabase.io")
+	u := ts.createUserWithIdentity("test@linkly.io")
 
 	identities, err := FindIdentitiesByUserID(ts.db, u.ID)
 	require.NoError(ts.T(), err)

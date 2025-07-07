@@ -5,8 +5,8 @@ import (
 
 	"github.com/didip/tollbooth/v5"
 	"github.com/didip/tollbooth/v5/limiter"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/ratelimit"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/ratelimit"
 )
 
 type Option interface {

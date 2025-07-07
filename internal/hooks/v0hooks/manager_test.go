@@ -8,12 +8,12 @@ import (
 
 	"github.com/gofrs/uuid"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/e2e"
+	"github.com/linkly-id/auth/internal/hooks/hookshttp"
+	"github.com/linkly-id/auth/internal/hooks/hookspgfunc"
+	"github.com/linkly-id/auth/internal/models"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/e2e"
-	"github.com/supabase/auth/internal/hooks/hookshttp"
-	"github.com/supabase/auth/internal/hooks/hookspgfunc"
-	"github.com/supabase/auth/internal/models"
 )
 
 type M = map[string]any
@@ -181,7 +181,7 @@ func TestHooks(t *testing.T) {
 						IssuedAt:  jwt.NewNumericDate(now),
 						Subject:   "mysubject",
 					},
-					Email:                       "valid.email@supabase.co",
+					Email:                       "valid.email@linkly.co",
 					AuthenticatorAssuranceLevel: "aal1",
 					SessionId:                   "sid",
 					Phone:                       "1234567890",
@@ -195,7 +195,7 @@ func TestHooks(t *testing.T) {
 				Claims: M{
 					"aud":           []interface{}{"myaudience"},
 					"iss":           "myissuer",
-					"email":         "valid.email@supabase.co",
+					"email":         "valid.email@linkly.co",
 					"exp":           1.7040672e+09,
 					"iat":           1.7040672e+09,
 					"sub":           "mysubject",

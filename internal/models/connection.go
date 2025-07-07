@@ -2,7 +2,7 @@ package models
 
 import (
 	"github.com/gobuffalo/pop/v6"
-	"github.com/supabase/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/storage"
 )
 
 type Pagination struct {

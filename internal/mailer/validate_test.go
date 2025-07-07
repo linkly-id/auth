@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/linkly-id/auth/internal/conf"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/conf"
 )
 
 func TestEmalValidatorService(t *testing.T) {
@@ -52,7 +52,7 @@ func TestEmalValidatorService(t *testing.T) {
 		}
 
 		ev := newEmailValidator(cfg)
-		err := ev.Validate(ctx, "chris.stockton@supabase.io")
+		err := ev.Validate(ctx, "chris.stockton@linkly.io")
 		if err != nil {
 			t.Fatalf("exp nil err; got %v", err)
 		}
@@ -159,7 +159,7 @@ func TestEmalValidatorService(t *testing.T) {
 		}
 
 		ev := newEmailValidator(cfg)
-		err := ev.Validate(ctx, "chris.stockton@supabase.io")
+		err := ev.Validate(ctx, "chris.stockton@linkly.io")
 		if err == nil {
 			t.Fatal("exp non-nil err")
 		}
@@ -199,16 +199,16 @@ func TestValidateEmailExtended(t *testing.T) {
 		err     string
 	}{
 		// valid (has mx record)
-		{email: "a@supabase.io"},
-		{email: "support@supabase.io"},
-		{email: "chris.stockton@supabase.io"},
+		{email: "a@linkly.io"},
+		{email: "support@linkly.io"},
+		{email: "chris.stockton@linkly.io"},
 
 		// bad format
 		{email: "", err: "invalid_email_format"},
 		{email: "io", err: "invalid_email_format"},
-		{email: "supabase.io", err: "invalid_email_format"},
-		{email: "@supabase.io", err: "invalid_email_format"},
-		{email: "test@.supabase.io", err: "invalid_email_format"},
+		{email: "linkly.io", err: "invalid_email_format"},
+		{email: "@linkly.io", err: "invalid_email_format"},
+		{email: "test@.linkly.io", err: "invalid_email_format"},
 
 		// invalid: valid mx records, but invalid and often typed
 		// (invalidEmailMap)
@@ -240,7 +240,7 @@ func TestValidateEmailExtended(t *testing.T) {
 		// various invalid emails
 		{email: "test@test.localhost", err: "invalid_email_dns"},
 		{email: "test@invalid.example.com", err: "invalid_email_dns"},
-		{email: "test@no.such.email.host.supabase.io", err: "invalid_email_dns"},
+		{email: "test@no.such.email.host.linkly.io", err: "invalid_email_dns"},
 
 		// test blocked mx records
 		{email: "test@hotmail.com", err: "invalid_email_mx"},
@@ -251,7 +251,7 @@ func TestValidateEmailExtended(t *testing.T) {
 			timeout: time.Millisecond},
 
 		// likewise for a valid email
-		{email: "support@supabase.io", timeout: time.Millisecond},
+		{email: "support@linkly.io", timeout: time.Millisecond},
 	}
 
 	cfg := conf.MailerConfiguration{

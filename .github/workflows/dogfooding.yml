@@ -28,8 +28,8 @@ jobs:
           # finds the latest RC version on master
           RELEASE_VERSION=$(node -e "const a = '$(git describe --tags --match rc*)'.replace(/^rc/, 'v').split('-'); console.log(a[0] + '-' + a[1]);")
 
-          PROD_VERSION=$(curl 'https://auth.supabase.io/auth/v1/health' | jq -r .version)
-          STAGING_VERSION=$(curl 'https://alt.supabase.green/auth/v1/health' | jq -r .version)
+          PROD_VERSION=$(curl 'https://auth.linkly.id/auth/v1/health' | jq -r .version)
+          STAGING_VERSION=$(curl 'https://alt.linkly.id/auth/v1/health' | jq -r .version)
 
           echo "Expecting RC version $RELEASE_VERSION to be up on prod and staging."
 

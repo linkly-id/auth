@@ -12,10 +12,10 @@ import (
 	"time"
 
 	"github.com/gofrs/uuid"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/reloader"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/reloader"
 )
 
 type M = map[string]any

@@ -12,12 +12,12 @@ import (
 	"time"
 
 	chimiddleware "github.com/go-chi/chi/v5/middleware"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/observability"
+	"github.com/linkly-id/auth/internal/security"
+	"github.com/linkly-id/auth/internal/utilities"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/security"
-	"github.com/supabase/auth/internal/utilities"
 
 	"github.com/didip/tollbooth/v5"
 	"github.com/didip/tollbooth/v5/limiter"
@@ -213,7 +213,7 @@ func (a *API) isValidExternalHost(w http.ResponseWriter, req *http.Request) (con
 	if xForwardedHost != "" || reqHost != "" {
 		// host has been provided to the request, but it hasn't been
 		// added to the allow list, raise a log message
-		// in Supabase platform the X-Forwarded-Host and full request
+		// in Linkly platform the X-Forwarded-Host and full request
 		// URL are likely sanitzied before they reach the server
 
 		fields := make(logrus.Fields)

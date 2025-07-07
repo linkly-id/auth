@@ -12,12 +12,12 @@ import (
 
 	"github.com/gofrs/uuid"
 	jwt "github.com/golang-jwt/jwt/v5"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/crypto"
+	"github.com/linkly-id/auth/internal/models"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/crypto"
-	"github.com/supabase/auth/internal/models"
 )
 
 type InviteTestSuite struct {
@@ -58,7 +58,7 @@ func (ts *InviteTestSuite) makeSuperAdmin(email string) string {
 	require.NoError(ts.T(), err, "Error making new user")
 	require.NoError(ts.T(), ts.API.db.Create(u))
 
-	u.Role = "supabase_admin"
+	u.Role = "linkly_admin"
 
 	var token string
 

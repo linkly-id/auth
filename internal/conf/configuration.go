@@ -229,7 +229,7 @@ type HIBPConfiguration struct {
 	Enabled    bool `json:"enabled"`
 	FailClosed bool `json:"fail_closed" split_words:"true"`
 
-	UserAgent string `json:"user_agent" split_words:"true" default:"https://github.com/supabase/gotrue"`
+	UserAgent string `json:"user_agent" split_words:"true" default:"https://github.com/linkly/gotrue"`
 
 	Bloom HIBPBloomConfiguration `json:"bloom"`
 }
@@ -853,6 +853,8 @@ func loadGlobal(config *GlobalConfiguration) error {
 		return err
 	}
 
+	fmt.Println(config)
+
 	if err := config.ApplyDefaults(); err != nil {
 		return err
 	}
@@ -947,7 +949,7 @@ func (config *GlobalConfiguration) ApplyDefaults() error {
 	}
 
 	if len(config.JWT.AdminRoles) == 0 {
-		config.JWT.AdminRoles = []string{"service_role", "supabase_admin"}
+		config.JWT.AdminRoles = []string{"service_role", "linkly_admin"}
 	}
 
 	if config.JWT.Exp == 0 {

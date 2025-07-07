@@ -30,11 +30,11 @@ jobs:
             supabase/gotrue
             public.ecr.aws/supabase/gotrue
             ghcr.io/supabase/gotrue
-            ghcr.io/supabase/auth
+            ghcr.io/linkly-id/auth
             436098097459.dkr.ecr.us-east-1.amazonaws.com/gotrue
             646182064048.dkr.ecr.us-east-1.amazonaws.com/gotrue
             supabase/auth
-            public.ecr.aws/supabase/auth
+            public.ecr.aws/linkly-id/auth
             436098097459.dkr.ecr.us-east-1.amazonaws.com/auth
             646182064048.dkr.ecr.us-east-1.amazonaws.com/auth
           flavor: |

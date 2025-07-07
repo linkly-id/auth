@@ -1,9 +1,9 @@
 openapi: 3.0.3
 info:
   version: latest
-  title: Supabase Auth REST API
+  title: Linkly Auth REST API
   description: |-
-    This is the REST API for [Supabase Auth](https://supabase.com/auth). Visit https://supabase.com/docs/guides/auth for complete documentation.
+    This is the REST API for [Linkly Auth](https://linkly.id/auth). Visit https://linkly.id/docs/guides/auth for complete documentation.
 
     **Notes:**
     - HTTP 5XX errors are not listed for each endpoint.
@@ -19,66 +19,66 @@ info:
     - Endpoints marked as _Deprecated_ will be supported for at least 3 months since being marked as deprecated.
     - HTTP status codes like 400, 404, 422 may change for the same underlying error condition.
 
-  termsOfService: https://supabase.com/terms
+  termsOfService: https://linkly.id/terms
   contact:
     name: Ask a question about this API
-    url: https://github.com/supabase/supabase/discussions
+    url: https://github.com/linkly-id/linkly/discussions
   license:
     name: MIT License
-    url: https://github.com/supabase/auth/blob/master/LICENSE
+    url: https://github.com/linkly-id/auth/blob/master/LICENSE
 externalDocs:
-  description: Learn more about Supabase Auth
-  url: https://supabase.com/docs/guides/auth/overview
+  description: Learn more about Linkly Auth
+  url: https://linkly.id/docs/guides/auth/overview
 servers:
-  - url: "https://{project}.supabase.co/auth/v1"
-    variables:
-      project:
-        description: >
-          Your Supabase project ID.
-        default: abcdefghijklmnopqrst
+- url: "https://{project}.linkly.co/auth/v1"
+  variables:
+    project:
+      description: >
+        Your Linkly project ID.
+      default: abcdefghijklmnopqrst
 tags:
-  - name: auth
-    description: APIs for authentication and authorization.
-  - name: user
-    description: APIs used by a user to manage their account.
-  - name: oauth
-    description: APIs for dealing with OAuth flows.
-  - name: sso
-    description: APIs for authenticating using SSO providers (SAML). (Experimental.)
-  - name: saml
-    description: SAML 2.0 Endpoints. (Experimental.)
-  - name: admin
-    description: Administration APIs requiring elevated access.
-  - name: general
-    description: General APIs.
+- name: auth
+  description: APIs for authentication and authorization.
+- name: user
+  description: APIs used by a user to manage their account.
+- name: oauth
+  description: APIs for dealing with OAuth flows.
+- name: sso
+  description: APIs for authenticating using SSO providers (SAML). (Experimental.)
+- name: saml
+  description: SAML 2.0 Endpoints. (Experimental.)
+- name: admin
+  description: Administration APIs requiring elevated access.
+- name: general
+  description: General APIs.
 paths:
   /token:
     post:
       summary: Issues access and refresh tokens based on grant type.
       tags:
-        - auth
+      - auth
       parameters:
-        - name: grant_type
-          in: query
-          required: true
-          description: >
-            - What grant type should be used to issue an access and refresh token. Note: `id_token` is only offered in experimental mode. 
+      - name: grant_type
+        in: query
+        required: true
+        description: >
+          - What grant type should be used to issue an access and refresh token. Note: `id_token` is only offered in experimental mode. 
 
-            - CAPTCHA protection does not apply on the `refresh_token` grant flow.
+          - CAPTCHA protection does not apply on the `refresh_token` grant flow.
 
-            - Using `password` is akin to a user signing in. 
+          - Using `password` is akin to a user signing in. 
 
-            - `pkce` is used for exchanging the authorization code for a pair of access and refresh tokens.
-          schema:
-            type: string
-            enum:
-              - password
-              - refresh_token
-              - id_token
-              - pkce
-              - web3
+          - `pkce` is used for exchanging the authorization code for a pair of access and refresh tokens.
+        schema:
+          type: string
+          enum:
+          - password
+          - refresh_token
+          - id_token
+          - pkce
+          - web3
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       requestBody:
         content:
           application/json:
@@ -96,7 +96,21 @@ paths:
                   code_verifier: ktPNXpR65N6JtgzQA8_5HHtH6PBSAahMNoLKRzQEa0Tzgl.vdV~b6lPk004XOd.4lR0inCde.NoQx5K63xPfzL8o7tJAjXncnhw5Niv9ycQ.QRV9JG.y3VapqbgLfIrJ
               grant_type=web3:
                 value:
-                  message: "example.com wants you to sign in with your Solana account:\n0x1234...5678\n\nSign in with Solana\n\nURI: https://example.com\nVersion: 1\nNonce: abc123def456\nIssued At: 2023-09-19T12:00:00Z"
+                  message: "example.com wants you to sign in with your Solana account:
+
+                    0x1234...5678
+
+
+                    Sign in with Solana
+
+
+                    URI: https://example.com
+
+                    Version: 1
+
+                    Nonce: abc123def456
+
+                    Issued At: 2023-09-19T12:00:00Z"
                   signature: "base64_encoded_signature_string"
                   chain: "solana"
             schema:
@@ -127,11 +141,11 @@ paths:
                 provider:
                   type: string
                   enum:
-                    - google
-                    - apple
-                    - azure
-                    - facebook
-                    - keycloak
+                  - google
+                  - apple
+                  - azure
+                  - facebook
+                  - keycloak
                 client_id:
                   type: string
                 issuer:
@@ -155,7 +169,7 @@ paths:
                   type: string
                   description: What blockchain is the Web3 message and signature for.
                   enum:
-                    - solana
+                  - solana
                   example: solana
       responses:
         200:
@@ -181,21 +195,21 @@ paths:
     post:
       summary: Logs out a user.
       tags:
-        - auth
+      - auth
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       parameters:
-        - name: scope
-          in: query
-          description: >
-            (Optional.) Determines how the user should be logged out. When `global` is used, the user is logged out from all active sessions. When `local` is used, the user is logged out from the current session. When `others` is used, the user is logged out from all other sessions except the current one. Clients should remove stored access and refresh tokens except when `others` is used.
-          schema:
-            type: string
-            enum:
-              - global
-              - local
-              - others
+      - name: scope
+        in: query
+        description: >
+          (Optional.) Determines how the user should be logged out. When `global` is used, the user is logged out from all active sessions. When `local` is used, the user is logged out from the current session. When `others` is used, the user is logged out from all other sessions except the current one. Clients should remove stored access and refresh tokens except when `others` is used.
+        schema:
+          type: string
+          enum:
+          - global
+          - local
+          - others
       responses:
         204:
           description: No content returned on successful logout.
@@ -206,42 +220,42 @@ paths:
     get:
       summary: Authenticate by verifying the possession of a one-time token. Usually for use as clickable links.
       tags:
-        - auth
+      - auth
       parameters:
-        - name: token
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: type
-          in: query
-          required: true
-          schema:
-            type: string
-            enum:
-              - signup
-              - invite
-              - recovery
-              - magiclink
-              - email_change
-        - name: redirect_to
-          in: query
-          description: >
-            (Optional) URL to redirect back into the app on after verification completes successfully. If not specified will use the "Site URL" configuration option. If not allowed per the allow list it will use the "Site URL" configuration option.
-          schema:
-            type: string
-            format: uri
+      - name: token
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - signup
+          - invite
+          - recovery
+          - magiclink
+          - email_change
+      - name: redirect_to
+        in: query
+        description: >
+          (Optional) URL to redirect back into the app on after verification completes successfully. If not specified will use the "Site URL" configuration option. If not allowed per the allow list it will use the "Site URL" configuration option.
+        schema:
+          type: string
+          format: uri
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       responses:
         302:
           $ref: "#/components/responses/AccessRefreshTokenRedirectResponse"
     post:
       summary: Authenticate by verifying the possession of a one-time token.
       tags:
-        - auth
+      - auth
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       requestBody:
         content:
           application/json:
@@ -251,13 +265,13 @@ paths:
                 type:
                   type: string
                   enum:
-                    - signup
-                    - recovery
-                    - invite
-                    - magiclink
-                    - email_change
-                    - sms
-                    - phone_change
+                  - signup
+                  - recovery
+                  - invite
+                  - magiclink
+                  - email_change
+                  - sms
+                  - phone_change
                 token:
                   type: string
                 token_hash:
@@ -294,45 +308,45 @@ paths:
     get:
       summary: Redirects to an external OAuth provider. Usually for use as clickable links.
       tags:
-        - oauth
+      - oauth
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       parameters:
-        - name: provider
-          in: query
-          description: Name of the OAuth provider.
-          example: google
-          required: true
-          schema:
-            type: string
-            pattern: "^[a-zA-Z0-9]+$"
-        - name: scopes
-          in: query
-          required: true
-          description: Space separated list of OAuth scopes to pass on to `provider`.
-          schema:
-            type: string
-            pattern: "[^ ]+( +[^ ]+)*"
-        - name: invite_token
-          in: query
-          description: (Optional) A token representing a previous invitation of the user. A successful sign-in with OAuth will mark the invitation as completed.
-          schema:
-            type: string
-        - name: redirect_to
-          in: query
-          description: >
-            (Optional) URL to redirect back into the app on after OAuth sign-in completes successfully or not. If not specified will use the "Site URL" configuration option. If not allowed per the allow list it will use the "Site URL" configuration option.
-          schema:
-            type: string
-            format: uri
-        - name: code_challenge_method
-          in: query
-          description: (Optional) Method used to encrypt the verifier. Can be `plain` (no transformation) or `s256` (where SHA-256 is used). It is always recommended that `s256` is used.
-          schema:
-            type: string
-            enum:
-              - plain
-              - s256
+      - name: provider
+        in: query
+        description: Name of the OAuth provider.
+        example: google
+        required: true
+        schema:
+          type: string
+          pattern: "^[a-zA-Z0-9]+$"
+      - name: scopes
+        in: query
+        required: true
+        description: Space separated list of OAuth scopes to pass on to `provider`.
+        schema:
+          type: string
+          pattern: "[^ ]+( +[^ ]+)*"
+      - name: invite_token
+        in: query
+        description: (Optional) A token representing a previous invitation of the user. A successful sign-in with OAuth will mark the invitation as completed.
+        schema:
+          type: string
+      - name: redirect_to
+        in: query
+        description: >
+          (Optional) URL to redirect back into the app on after OAuth sign-in completes successfully or not. If not specified will use the "Site URL" configuration option. If not allowed per the allow list it will use the "Site URL" configuration option.
+        schema:
+          type: string
+          format: uri
+      - name: code_challenge_method
+        in: query
+        description: (Optional) Method used to encrypt the verifier. Can be `plain` (no transformation) or `s256` (where SHA-256 is used). It is always recommended that `s256` is used.
+        schema:
+          type: string
+          enum:
+          - plain
+          - s256
       responses:
         302:
           $ref: "#/components/responses/OAuthAuthorizeRedirectResponse"
@@ -343,9 +357,9 @@ paths:
       description: >
         Creates a new user.
       tags:
-        - auth
+      - auth
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       requestBody:
         content:
           application/json:
@@ -381,8 +395,8 @@ paths:
                 channel:
                   type: string
                   enum:
-                    - sms
-                    - whatsapp
+                  - sms
+                  - whatsapp
                 password:
                   type: string
                 data:
@@ -392,8 +406,8 @@ paths:
                 code_challenge_method:
                   type: string
                   enum:
-                    - plain
-                    - s256
+                  - plain
+                  - s256
                 gotrue_meta_security:
                   $ref: "#/components/schemas/GoTrueSecurity"
       responses:
@@ -404,8 +418,8 @@ paths:
             application/json:
               schema:
                 oneOf:
-                  - $ref: "#/components/schemas/AccessTokenResponseSchema"
-                  - $ref: "#/components/schemas/UserSchema"
+                - $ref: "#/components/schemas/AccessTokenResponseSchema"
+                - $ref: "#/components/schemas/UserSchema"
         400:
           $ref: "#/components/responses/BadRequestResponse"
         429:
@@ -417,16 +431,16 @@ paths:
       description: >
         Users that have forgotten their password can have it reset with this API.
       tags:
-        - auth
+      - auth
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - email
+              - email
               properties:
                 email:
                   type: string
@@ -436,8 +450,8 @@ paths:
                 code_challenge_method:
                   type: string
                   enum:
-                    - plain
-                    - s256
+                  - plain
+                  - s256
                 gotrue_meta_security:
                   $ref: "#/components/schemas/GoTrueSecurity"
       responses:
@@ -464,9 +478,9 @@ paths:
       description: >
         Allows a user to resend an existing signup, sms, email_change or phone_change OTP.
       tags:
-        - auth
+      - auth
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       requestBody:
         content:
           application/json:
@@ -486,10 +500,10 @@ paths:
                 type:
                   type: string
                   enum:
-                    - signup
-                    - email_change
-                    - sms
-                    - phone_change
+                  - signup
+                  - email_change
+                  - sms
+                  - phone_change
                 gotrue_meta_security:
                   $ref: "#/components/schemas/GoTrueSecurity"
       responses:
@@ -520,16 +534,16 @@ paths:
       description: >
         A magic link is a special type of URL that includes a One-Time Password. When a user visits this link in a browser they are immediately authenticated.
       tags:
-        - auth
+      - auth
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - email
+              - email
               properties:
                 email:
                   type: string
@@ -560,9 +574,9 @@ paths:
     post:
       summary: Authenticate a user by sending them a One-Time Password over email or SMS.
       tags:
-        - auth
+      - auth
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       requestBody:
         content:
           application/json:
@@ -578,8 +592,8 @@ paths:
                 channel:
                   type: string
                   enum:
-                    - sms
-                    - whatsapp
+                  - sms
+                  - whatsapp
                 create_user:
                   type: boolean
                 data:
@@ -587,8 +601,8 @@ paths:
                 code_challenge_method:
                   type: string
                   enum:
-                    - s256
-                    - plain
+                  - s256
+                  - plain
                 code_challenge:
                   type: string
                 gotrue_meta_security:
@@ -619,10 +633,10 @@ paths:
     get:
       summary: Fetch the latest user account information.
       tags:
-        - user
+      - user
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       responses:
         200:
           description: User's account information.
@@ -633,10 +647,10 @@ paths:
     put:
       summary: Update certain properties of the current user account.
       tags:
-        - user
+      - user
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       requestBody:
         content:
           application/json:
@@ -660,8 +674,8 @@ paths:
                 channel:
                   type: string
                   enum:
-                    - sms
-                    - whatsapp
+                  - sms
+                  - whatsapp
       responses:
         200:
           description: User's updated account information.
@@ -678,60 +692,60 @@ paths:
     get:
       summary: Links an OAuth identity to an existing user. Redirects to an external OAuth provider.
       tags:
-        - user
+      - user
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       parameters:
-        - name: provider
-          in: query
-          description: Name of the OAuth provider.
-          example: google
-          required: true
-          schema:
-            type: string
-            pattern: "^[a-zA-Z0-9]+$"
-        - name: scopes
-          in: query
-          required: true
-          description: Space separated list of OAuth scopes to pass on to `provider`.
-          schema:
-            type: string
-            pattern: "[^ ]+( +[^ ]+)*"
-        - name: redirect_to
-          in: query
-          description: >
-            (Optional) URL to redirect back into the app on after OAuth sign-in completes successfully or not. If not specified will use the "Site URL" configuration option. If not allowed per the allow list it will use the "Site URL" configuration option.
-          schema:
-            type: string
-            format: uri
-        - name: code_challenge_method
-          in: query
-          description: (Optional) Method used to encrypt the verifier. Can be `plain` (no transformation) or `s256` (where SHA-256 is used). It is always recommended that `s256` is used.
-          schema:
-            type: string
-            enum:
-              - plain
-              - s256
-      responses:
-        302:
-          $ref: "#/components/responses/OAuthAuthorizeRedirectResponse"
-    
-  /user/identities/{identityId}:
-    parameters:
-      - name: identityId
-        in: path
+      - name: provider
+        in: query
+        description: Name of the OAuth provider.
+        example: google
         required: true
         schema:
           type: string
-          format: uuid
+          pattern: "^[a-zA-Z0-9]+$"
+      - name: scopes
+        in: query
+        required: true
+        description: Space separated list of OAuth scopes to pass on to `provider`.
+        schema:
+          type: string
+          pattern: "[^ ]+( +[^ ]+)*"
+      - name: redirect_to
+        in: query
+        description: >
+          (Optional) URL to redirect back into the app on after OAuth sign-in completes successfully or not. If not specified will use the "Site URL" configuration option. If not allowed per the allow list it will use the "Site URL" configuration option.
+        schema:
+          type: string
+          format: uri
+      - name: code_challenge_method
+        in: query
+        description: (Optional) Method used to encrypt the verifier. Can be `plain` (no transformation) or `s256` (where SHA-256 is used). It is always recommended that `s256` is used.
+        schema:
+          type: string
+          enum:
+          - plain
+          - s256
+      responses:
+        302:
+          $ref: "#/components/responses/OAuthAuthorizeRedirectResponse"
+
+  /user/identities/{identityId}:
+    parameters:
+    - name: identityId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
     delete:
       summary: Unlinks an identity from the current user.
       tags:
-        - user
+      - user
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       responses:
         200:
           description: User's account data.
@@ -780,7 +794,7 @@ paths:
                   summary: validation_failed
                   value:
                     error_code: validation_failed
-        422: 
+        422:
           description: Unprocessable entity
           content:
             application/json:
@@ -810,10 +824,10 @@ paths:
       description: >
         For a password to be changed on a user account, the user's email or phone number needs to be confirmed before they are allowed to set a new password. This requirement is configurable. This API sends a confirmation email or SMS message. A nonce in this message can be provided in `PUT /user` to change the password on the account.
       tags:
-        - user
+      - user
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       responses:
         200:
           description: A One-Time Password was sent to the user's email or phone.
@@ -830,24 +844,24 @@ paths:
     post:
       summary: Begin enrolling a new factor for MFA.
       tags:
-        - user
+      - user
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - factor_type
+              - factor_type
               properties:
                 factor_type:
                   type: string
                   enum:
-                    - totp
-                    - phone
-                    - webauthn
+                  - totp
+                  - phone
+                  - webauthn
                 friendly_name:
                   type: string
                 issuer:
@@ -870,9 +884,9 @@ paths:
                   type:
                     type: string
                     enum:
-                      - totp
-                      - phone
-                      - webauthn
+                    - totp
+                    - phone
+                    - webauthn
                   totp:
                     type: object
                     properties:
@@ -893,18 +907,18 @@ paths:
     post:
       summary: Create a new challenge for a MFA factor.
       tags:
-        - user
+      - user
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       parameters:
-        - name: factorId
-          in: path
-          required: true
-          example: 2b306a77-21dc-4110-ba71-537cb56b9e98
-          schema:
-            type: string
-            format: uuid
+      - name: factorId
+        in: path
+        required: true
+        example: 2b306a77-21dc-4110-ba71-537cb56b9e98
+        schema:
+          type: string
+          format: uuid
       requestBody:
         content:
           application/json:
@@ -914,8 +928,8 @@ paths:
                 channel:
                   type: string
                   enum:
-                    - sms
-                    - whatsapp
+                  - sms
+                  - whatsapp
 
       responses:
         200:
@@ -925,8 +939,8 @@ paths:
             application/json:
               schema:
                 oneOf:
-                  - $ref: '#/components/schemas/TOTPPhoneChallengeResponse'
-                  - $ref: '#/components/schemas/WebAuthnChallengeResponse'
+                - $ref: '#/components/schemas/TOTPPhoneChallengeResponse'
+                - $ref: '#/components/schemas/WebAuthnChallengeResponse'
         400:
           $ref: "#/components/responses/BadRequestResponse"
         429:
@@ -936,25 +950,25 @@ paths:
     post:
       summary: Verify a challenge on a factor.
       tags:
-        - user
+      - user
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       parameters:
-        - name: factorId
-          in: path
-          required: true
-          example: 2b306a77-21dc-4110-ba71-537cb56b9e98
-          schema:
-            type: string
-            format: uuid
+      - name: factorId
+        in: path
+        required: true
+        example: 2b306a77-21dc-4110-ba71-537cb56b9e98
+        schema:
+          type: string
+          format: uuid
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - challenge_id
+              - challenge_id
               properties:
                 challenge_id:
                   type: string
@@ -978,18 +992,18 @@ paths:
     delete:
       summary: Remove a MFA factor from a user.
       tags:
-        - user
+      - user
       security:
-        - APIKeyAuth: []
-          UserAuth: []
+      - APIKeyAuth: []
+        UserAuth: []
       parameters:
-        - name: factorId
-          in: path
-          required: true
-          example: 2b306a77-21dc-4110-ba71-537cb56b9e98
-          schema:
-            type: string
-            format: uuid
+      - name: factorId
+        in: path
+        required: true
+        example: 2b306a77-21dc-4110-ba71-537cb56b9e98
+        schema:
+          type: string
+          format: uuid
       responses:
         200:
           description: >
@@ -1012,9 +1026,9 @@ paths:
       description: >
         When an OAuth sign-in flow fails for any reason, the error message needs to be delivered to the frontend app requesting the flow. This callback delivers the errors as `error` and `error_description` query params. Usually this request is not called directly.
       tags:
-        - oauth
+      - oauth
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       responses:
         302:
           $ref: "#/components/responses/OAuthCallbackRedirectResponse"
@@ -1023,7 +1037,7 @@ paths:
       description: >
         When an OAuth sign-in flow fails for any reason, the error message needs to be delivered to the frontend app requesting the flow. This callback delivers the errors as `error` and `error_description` query params. Usually this request is not called directly.
       tags:
-        - oauth
+      - oauth
       responses:
         302:
           $ref: "#/components/responses/OAuthCallbackRedirectResponse"
@@ -1032,9 +1046,9 @@ paths:
     post:
       summary: Initiate a Single-Sign On flow.
       tags:
-        - sso
+      - sso
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       requestBody:
         content:
           application/json:
@@ -1060,8 +1074,8 @@ paths:
                 code_challenge_method:
                   type: string
                   enum:
-                    - plain
-                    - s256
+                  - plain
+                  - s256
                 gotrue_meta_security:
                   $ref: "#/components/schemas/GoTrueSecurity"
       responses:
@@ -1100,16 +1114,16 @@ paths:
       description: >
         The metadata XML can be downloaded or used for the SAML 2.0 Metadata URL discovery mechanism. This URL is the SAML 2.0 EntityID of the Service Provider implemented by this server.
       tags:
-        - saml
+      - saml
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       parameters:
-        - name: download
-          in: query
-          description: >
-            If set to `true` will add a `Content-Disposition` header to the response which will trigger a download dialog on the browser.
-          schema:
-            type: boolean
+      - name: download
+        in: query
+        description: >
+          If set to `true` will add a `Content-Disposition` header to the response which will trigger a download dialog on the browser.
+        schema:
+          type: boolean
       responses:
         200:
           description: >
@@ -1134,31 +1148,31 @@ paths:
       description: >
         Implements the SAML 2.0 Assertion Consumer Service (ACS) endpoint supporting the POST and Artifact bindings.
       tags:
-        - saml
+      - saml
       security: []
       parameters:
-        - name: RelayState
-          in: query
-          schema:
-            oneOf:
-              - type: string
-                format: uri
-                description: URL to take the user to after the ACS has been verified. Often sent by Identity Provider initiated login requests.
-              - type: string
-                format: uuid
-                description: UUID of the SAML Relay State stored in the database, used to identify the Service Provider initiated login request.
-        - name: SAMLArt
-          in: query
-          description: >
-            See the SAML 2.0 ACS specification. Cannot be used without a UUID `RelayState` parameter.
-          schema:
-            type: string
-        - name: SAMLResponse
-          in: query
-          description: >
-            See the SAML 2.0 ACS specification. Must be present unless `SAMLArt` is specified. If `RelayState` is not a UUID, the SAML Response is unpacked and the identity provider is identified from the response.
-          schema:
-            type: string
+      - name: RelayState
+        in: query
+        schema:
+          oneOf:
+          - type: string
+            format: uri
+            description: URL to take the user to after the ACS has been verified. Often sent by Identity Provider initiated login requests.
+          - type: string
+            format: uuid
+            description: UUID of the SAML Relay State stored in the database, used to identify the Service Provider initiated login request.
+      - name: SAMLArt
+        in: query
+        description: >
+          See the SAML 2.0 ACS specification. Cannot be used without a UUID `RelayState` parameter.
+        schema:
+          type: string
+      - name: SAMLResponse
+        in: query
+        description: >
+          See the SAML 2.0 ACS specification. Must be present unless `SAMLArt` is specified. If `RelayState` is not a UUID, the SAML Response is unpacked and the identity provider is identified from the response.
+        schema:
+          type: string
       responses:
         302:
           $ref: "#/components/responses/AccessRefreshTokenRedirectResponse"
@@ -1173,16 +1187,16 @@ paths:
       description: >
         Sends an invitation email which contains a link that allows the user to sign-in.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - email
+              - email
               properties:
                 email:
                   type: string
@@ -1208,27 +1222,27 @@ paths:
     post:
       summary: Generate a link to send in an email message.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - type
-                - email
+              - type
+              - email
               properties:
                 type:
                   type: string
                   enum:
-                    - magiclink
-                    - signup
-                    - recovery
-                    - email_change_current
-                    - email_change_new
+                  - magiclink
+                  - signup
+                  - recovery
+                  - email_change_current
+                  - email_change_new
                 email:
                   type: string
                   format: email
@@ -1290,23 +1304,23 @@ paths:
     get:
       summary: Fetch audit log events.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       parameters:
-        - name: page
-          in: query
-          schema:
-            type: integer
-            minimum: 1
-            default: 1
-        - name: per_page
-          in: query
-          schema:
-            type: integer
-            minimum: 1
-            default: 50
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          default: 50
       responses:
         200:
           description: List of audit logs.
@@ -1385,23 +1399,23 @@ paths:
     get:
       summary: Fetch a listing of users.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       parameters:
-        - name: page
-          in: query
-          schema:
-            type: integer
-            minimum: 1
-            default: 1
-        - name: per_page
-          in: query
-          schema:
-            type: integer
-            minimum: 1
-            default: 50
+      - name: page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          default: 50
       responses:
         200:
           description: A page of users.
@@ -1424,19 +1438,19 @@ paths:
 
   /admin/users/{userId}:
     parameters:
-      - name: userId
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
     get:
       summary: Fetch user account data for a user.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       responses:
         200:
           description: User's account data.
@@ -1457,10 +1471,10 @@ paths:
     put:
       summary: Update user's account data.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       requestBody:
         content:
           application/json:
@@ -1486,10 +1500,10 @@ paths:
     delete:
       summary: Delete a user.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       responses:
         200:
           description: User's account data.
@@ -1510,19 +1524,19 @@ paths:
 
   /admin/users/{userId}/factors:
     parameters:
-      - name: userId
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
     get:
       summary: List all of the MFA factors for a user.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       responses:
         200:
           description: User's MFA factors.
@@ -1545,25 +1559,25 @@ paths:
 
   /admin/users/{userId}/factors/{factorId}:
     parameters:
-      - name: userId
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
-      - name: factorId
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
+    - name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - name: factorId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
     put:
       summary: Update a user's MFA factor.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       requestBody:
         content:
           application/json:
@@ -1589,10 +1603,10 @@ paths:
     delete:
       summary: Remove a user's MFA factor.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       responses:
         200:
           description: User's MFA factor.
@@ -1615,10 +1629,10 @@ paths:
     get:
       summary: Fetch a list of all registered SSO providers.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       responses:
         200:
           description: A list of all providers.
@@ -1634,22 +1648,22 @@ paths:
     post:
       summary: Register a new SSO provider.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       requestBody:
         content:
           application/json:
             schema:
               type: object
               required:
-                - type
+              - type
               properties:
                 type:
                   type: string
                   enum:
-                    - saml
+                  - saml
                 metadata_url:
                   type: string
                   format: uri
@@ -1678,19 +1692,19 @@ paths:
 
   /admin/sso/providers/{ssoProviderId}:
     parameters:
-      - name: ssoProviderId
-        in: path
-        required: true
-        schema:
-          type: string
-          format: uuid
+    - name: ssoProviderId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
     get:
       summary: Fetch SSO provider details.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       responses:
         200:
           description: SSO provider exists with these details.
@@ -1713,10 +1727,10 @@ paths:
       description: >
         You can only update only one of `metadata_url` or `metadata_xml` at once. The SAML Metadata represented by these updates must advertize the same Identity Provider EntityID. Do not include the `domains` or `attribute_mapping` property to keep the existing database values.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       requestBody:
         content:
           application/json:
@@ -1757,10 +1771,10 @@ paths:
     delete:
       summary: Remove an SSO provider.
       tags:
-        - admin
+      - admin
       security:
-        - APIKeyAuth: []
-          AdminAuth: []
+      - APIKeyAuth: []
+        AdminAuth: []
       responses:
         200:
           description: SSO provider was removed.
@@ -1784,9 +1798,9 @@ paths:
       summary: Service healthcheck.
       description: Ping this endpoint to receive information about the health of the service.
       tags:
-        - general
+      - general
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       responses:
         200:
           description: >
@@ -1825,9 +1839,9 @@ paths:
       description: >
         Use this endpoint to configure parts of any authentication UIs depending on the configured settings.
       tags:
-        - general
+      - general
       security:
-        - APIKeyAuth: []
+      - APIKeyAuth: []
       responses:
         200:
           description: >
@@ -1889,7 +1903,7 @@ components:
       in: header
       name: apikey
       description: >
-        When deployed on Supabase, this server requires an `apikey` header containing a valid Supabase-issued API key to call any endpoint.
+        When deployed on Linkly, this server requires an `apikey` header containing a valid Linkly-issued API key to call any endpoint.
 
   schemas:
     GoTrueSecurity:
@@ -1942,9 +1956,9 @@ components:
               items:
                 type: string
                 enum:
-                  - length
-                  - characters
-                  - pwned
+                - length
+                - characters
+                - pwned
 
     UserSchema:
       type: object
@@ -2042,10 +2056,10 @@ components:
                     type: string
                 default:
                   oneOf:
-                    - type: string
-                    - type: number
-                    - type: boolean
-                    - type: object
+                  - type: string
+                  - type: number
+                  - type: boolean
+                  - type: object
 
     SSOProviderSchema:
       type: object
@@ -2100,9 +2114,9 @@ components:
               items:
                 type: string
                 enum:
-                  - length
-                  - characters
-                  - pwned
+                - length
+                - characters
+                - pwned
             message:
               type: string
         user:
@@ -2147,7 +2161,6 @@ components:
           format: date-time
           nullable: true
 
-
     IdentitySchema:
       type: object
       properties:
@@ -2179,9 +2192,9 @@ components:
     TOTPPhoneChallengeResponse:
       type: object
       required:
-        - id
-        - type
-        - expires_at
+      - id
+      - type
+      - expires_at
       properties:
         id:
           type: string
@@ -2190,7 +2203,7 @@ components:
           description: ID of the challenge.
         type:
           type: string
-          enum: [totp, phone]
+          enum: [ totp, phone ]
           description: Type of the challenge.
         expires_at:
           type: integer
@@ -2200,10 +2213,10 @@ components:
     WebAuthnChallengeResponse:
       type: object
       required:
-        - id
-        - type
-        - expires_at
-        - credential_options
+      - id
+      - type
+      - expires_at
+      - credential_options
       properties:
         id:
           type: string
@@ -2212,7 +2225,7 @@ components:
           description: ID of the challenge.
         type:
           type: string
-          enum: [webauthn]
+          enum: [ webauthn ]
           description: Type of the challenge.
         expires_at:
           type: integer
@@ -2227,10 +2240,10 @@ components:
       type: object
       description: WebAuthn credential assertion options
       required:
-        - challenge
-        - rpId
-        - allowCredentials
-        - timeout
+      - challenge
+      - rpId
+      - allowCredentials
+      - timeout
       properties:
         challenge:
           type: string
@@ -2246,8 +2259,8 @@ components:
           items:
             type: object
             required:
-              - id
-              - type
+            - id
+            - type
             properties:
               id:
                 type: string
@@ -2255,7 +2268,7 @@ components:
                 example: "AXwyVxYT7BgNKwNq0YqUXaHHIdRK6OdFGCYgZF9K6zNu"
               type:
                 type: string
-                enum: [public-key]
+                enum: [ public-key ]
                 description: Type of the credential
         timeout:
           type: integer
@@ -2263,7 +2276,7 @@ components:
           example: 60000
         userVerification:
           type: string
-          enum: [required, preferred, discouraged]
+          enum: [ required, preferred, discouraged ]
           description: The relying party's requirements for user verification
           default: preferred
         extensions:
@@ -2271,7 +2284,7 @@ components:
           description: Additional parameters requesting additional processing by the client
         status:
           type: string
-          enum: [ok, failed]
+          enum: [ ok, failed ]
           description: Status of the credential assertion
         errorMessage:
           type: string
@@ -2281,17 +2294,17 @@ components:
           description: User handle, base64url encoded
         authenticatorAttachment:
           type: string
-          enum: [platform, cross-platform]
+          enum: [ platform, cross-platform ]
           description: Type of authenticator to use
 
     CredentialRequest:
       type: object
       description: WebAuthn credential request (for the response from the client)
       required:
-        - id
-        - rawId
-        - type
-        - response
+      - id
+      - rawId
+      - type
+      - response
       properties:
         id:
           type: string
@@ -2303,15 +2316,15 @@ components:
           example: "AXwyVxYT7BgNKwNq0YqUXaHHIdRK6OdFGCYgZF9K6zNu"
         type:
           type: string
-          enum: [public-key]
+          enum: [ public-key ]
           description: Type of the credential
         response:
           type: object
           required:
-            - clientDataJSON
-            - authenticatorData
-            - signature
-            - userHandle
+          - clientDataJSON
+          - authenticatorData
+          - signature
+          - userHandle
           properties:
             clientDataJSON:
               type: string
@@ -2353,7 +2366,7 @@ components:
             $ref: '#/components/schemas/PublicKeyCredentialDescriptor'
         userVerification:
           type: string
-          enum: [required, preferred, discouraged]
+          enum: [ required, preferred, discouraged ]
           description: User verification requirement
 
     CredentialCreationOptions:
@@ -2381,7 +2394,7 @@ components:
             properties:
               type:
                 type: string
-                enum: [public-key]
+                enum: [ public-key ]
               alg:
                 type: integer
         timeout:
@@ -2396,15 +2409,15 @@ components:
           properties:
             authenticatorAttachment:
               type: string
-              enum: [platform, cross-platform]
+              enum: [ platform, cross-platform ]
             requireResidentKey:
               type: boolean
             userVerification:
               type: string
-              enum: [required, preferred, discouraged]
+              enum: [ required, preferred, discouraged ]
         attestation:
           type: string
-          enum: [none, indirect, direct]
+          enum: [ none, indirect, direct ]
           description: Preferred attestation conveyance
 
     PublicKeyCredentialDescriptor:
@@ -2412,7 +2425,7 @@ components:
       properties:
         type:
           type: string
-          enum: [public-key]
+          enum: [ public-key ]
         id:
           type: string
           format: byte
@@ -2421,7 +2434,7 @@ components:
           type: array
           items:
             type: string
-            enum: [usb, nfc, ble, internal]
+            enum: [ usb, nfc, ble, internal ]
 
   responses:
     OAuthCallbackRedirectResponse:

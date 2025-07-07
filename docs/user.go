@@ -2,8 +2,8 @@
 package docs
 
 import (
-	"github.com/supabase/auth/internal/api"
-	"github.com/supabase/auth/internal/models"
+	"github.com/linkly-id/auth/internal/api"
+	"github.com/linkly-id/auth/internal/models"
 )
 
 // swagger:route GET /user user user-get

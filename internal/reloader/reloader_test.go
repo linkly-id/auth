@@ -13,9 +13,9 @@ import (
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/joho/godotenv"
+	"github.com/linkly-id/auth/internal/conf"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
-	"github.com/supabase/auth/internal/conf"
 	"golang.org/x/sync/errgroup"
 )
 

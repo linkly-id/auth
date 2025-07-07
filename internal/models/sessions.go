@@ -9,8 +9,8 @@ import (
 
 	"github.com/gobuffalo/pop/v6"
 	"github.com/gofrs/uuid"
+	"github.com/linkly-id/auth/internal/storage"
 	"github.com/pkg/errors"
-	"github.com/supabase/auth/internal/storage"
 )
 
 type AuthenticatorAssuranceLevel int

@@ -6,12 +6,12 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/utilities"
-	"github.com/supabase/auth/internal/utilities/siws"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/api/provider"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/utilities"
+	"github.com/linkly-id/auth/internal/utilities/siws"
 )
 
 type Web3GrantParams struct {

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/linkly-id/auth/internal/api/apierrors"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/api/apierrors"
 )
 
 // BCrypt hashed passwords have a 72 character limit

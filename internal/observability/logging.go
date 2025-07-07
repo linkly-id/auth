@@ -8,8 +8,8 @@ import (
 	"github.com/bombsimon/logrusr/v3"
 	"github.com/gobuffalo/pop/v6"
 	"github.com/gobuffalo/pop/v6/logging"
+	"github.com/linkly-id/auth/internal/conf"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/conf"
 	"go.opentelemetry.io/otel"
 )
 

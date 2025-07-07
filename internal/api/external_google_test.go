@@ -8,8 +8,8 @@ import (
 	"net/url"
 
 	jwt "github.com/golang-jwt/jwt/v5"
+	"github.com/linkly-id/auth/internal/api/provider"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/api/provider"
 )
 
 const (

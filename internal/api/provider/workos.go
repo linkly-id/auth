@@ -4,8 +4,8 @@ import (
 	"context"
 	"strings"
 
+	"github.com/linkly-id/auth/internal/conf"
 	"github.com/mitchellh/mapstructure"
-	"github.com/supabase/auth/internal/conf"
 	"golang.org/x/oauth2"
 )
 

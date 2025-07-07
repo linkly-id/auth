@@ -9,8 +9,8 @@ import (
 	"testing"
 
 	"github.com/lestrrat-go/jwx/v2/jwk"
+	"github.com/linkly-id/auth/internal/conf"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/conf"
 )
 
 func TestJwks(t *testing.T) {

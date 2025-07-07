@@ -6,21 +6,21 @@ import (
 	"strings"
 	"time"
 
-	"github.com/supabase/auth/internal/hooks/v0hooks"
-	mail "github.com/supabase/auth/internal/mailer"
+	"github.com/linkly-id/auth/internal/hooks/v0hooks"
+	mail "github.com/linkly-id/auth/internal/mailer"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
 
 	"github.com/badoux/checkmail"
 	"github.com/fatih/structs"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/api/provider"
+	"github.com/linkly-id/auth/internal/crypto"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/utilities"
 	"github.com/pkg/errors"
 	"github.com/sethvargo/go-password/password"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/crypto"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/utilities"
 )
 
 var (

@@ -12,15 +12,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/supabase/auth/internal/api/apierrors"
-	mail "github.com/supabase/auth/internal/mailer"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	mail "github.com/linkly-id/auth/internal/mailer"
 
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/crypto"
+	"github.com/linkly-id/auth/internal/models"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/crypto"
-	"github.com/supabase/auth/internal/models"
 )
 
 type VerifyTestSuite struct {

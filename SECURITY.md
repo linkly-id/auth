@@ -1,12 +1,12 @@
 # Security Policy
 
-Auth is a project maintained by [Supabase](https://supabase.com). Below is
+Auth is a project maintained by [Linkly](https://linkly.id). Below is
 our security policy.
 
-Contact: security@supabase.io 
-Canonical: https://supabase.com/.well-known/security.txt
+Contact: hello@linkly.id 
+Canonical: https://linkly.id/.well-known/security.txt
 
-At Supabase, we consider the security of our systems a top priority. But no
+At Linkly, we consider the security of our systems a top priority. But no
 matter how much effort we put into system security, there can still be
 vulnerabilities present.
 
@@ -29,7 +29,7 @@ Out of scope vulnerabilities:
 
 Please do the following:
 
-- E-mail your findings to security@supabase.io. 
+- E-mail your findings to hello@linkly.id. 
 - Do not run automated scanners on our infrastructure or dashboard. If you wish
   to do this, contact us and we will set up a sandbox for you. 
 - Do not take advantage of the vulnerability or problem you have discovered,

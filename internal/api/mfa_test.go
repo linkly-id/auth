@@ -12,13 +12,13 @@ import (
 
 	"github.com/gofrs/uuid"
 
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/api/sms_provider"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/crypto"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/utilities"
 	"github.com/pquerna/otp"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/sms_provider"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/crypto"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/utilities"
 
 	"github.com/pquerna/otp/totp"
 	"github.com/stretchr/testify/require"

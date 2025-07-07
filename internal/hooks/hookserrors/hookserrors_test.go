@@ -4,8 +4,8 @@ import (
 	"errors"
 	"testing"
 
+	"github.com/linkly-id/auth/internal/api/apierrors"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/api/apierrors"
 )
 
 func TestFromBytes(t *testing.T) {

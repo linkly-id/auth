@@ -5,19 +5,19 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/hooks/hookshttp"
+	"github.com/linkly-id/auth/internal/hooks/hookspgfunc"
+	"github.com/linkly-id/auth/internal/hooks/v0hooks"
+	"github.com/linkly-id/auth/internal/mailer"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/observability"
+	"github.com/linkly-id/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/utilities"
 	"github.com/rs/cors"
 	"github.com/sebest/xff"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/hooks/hookshttp"
-	"github.com/supabase/auth/internal/hooks/hookspgfunc"
-	"github.com/supabase/auth/internal/hooks/v0hooks"
-	"github.com/supabase/auth/internal/mailer"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/utilities"
 	"github.com/supabase/hibp"
 )
 
@@ -70,11 +70,11 @@ func (a *API) deprecationNotices() {
 	log := logrus.WithField("component", "api")
 
 	if config.JWT.AdminGroupName != "" {
-		log.Warn("DEPRECATION NOTICE: GOTRUE_JWT_ADMIN_GROUP_NAME not supported by Supabase's GoTrue, will be removed soon")
+		log.Warn("DEPRECATION NOTICE: GOTRUE_JWT_ADMIN_GROUP_NAME not supported by Linkly's GoTrue, will be removed soon")
 	}
 
 	if config.JWT.DefaultGroupName != "" {
-		log.Warn("DEPRECATION NOTICE: GOTRUE_JWT_DEFAULT_GROUP_NAME not supported by Supabase's GoTrue, will be removed soon")
+		log.Warn("DEPRECATION NOTICE: GOTRUE_JWT_DEFAULT_GROUP_NAME not supported by Linkly's GoTrue, will be removed soon")
 	}
 }
 

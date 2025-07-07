@@ -8,8 +8,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/utilities"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/utilities"
 )
 
 const (

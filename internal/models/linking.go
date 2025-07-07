@@ -3,9 +3,9 @@ package models
 import (
 	"strings"
 
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/api/provider"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/storage"
 )
 
 // GetAccountLinkingDomain returns a string that describes the account linking

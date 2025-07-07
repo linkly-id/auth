@@ -6,9 +6,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/utilities"
 	"github.com/sirupsen/logrus"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/utilities"
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"

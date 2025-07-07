@@ -96,7 +96,7 @@ jobs:
           mv auth-arm64 auth
           tar -czvf auth-v$RELEASE_VERSION-arm64.tar.gz auth gotrue migrations/
 
-          # Create a "supafast" tarball that can be used by supabase-admin-api to upgrade Auth quickly
+          # Create a "supafast" tarball that can be used by linkly-admin-api to upgrade Auth quickly
           rm gotrue
           mv auth gotrue
           tar -czvf auth-v$RELEASE_VERSION.supafast-arm64.tar.gz gotrue migrations/
@@ -148,7 +148,7 @@ EOF
               -n "$RELEASE_NOTES"
 
             GH_TOKEN='${{ github.token }}' gh pr comment "$PR_NUMBER" \
-              -b "Release candidate [v$RELEASE_VERSION](https://github.com/supabase/gotrue/releases/tag/$RELEASE_NAME) published."
+              -b "Release candidate [v$RELEASE_VERSION](https://github.com/linkly-id/auth/releases/tag/$RELEASE_NAME) published."
           else
             if [ "$GITHUB_REF" == "refs/heads/main" ] || [ "$GITHUB_REF" == "refs/heads/master" ]
             then
@@ -163,7 +163,7 @@ EOF
                   --method POST \
                   -H "Accept: application/vnd.github+json" \
                   -H "X-GitHub-Api-Version: 2022-11-28" \
-                  /repos/supabase/gotrue/git/refs \
+                  /repos/linkly-id/auth/git/refs \
                   -f "ref=refs/heads/release/${RELEASE_VERSION}" \
                   -f "sha=$GITHUB_SHA"
                 fi

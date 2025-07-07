@@ -3,7 +3,7 @@ package ratelimit
 import (
 	"time"
 
-	"github.com/supabase/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/conf"
 )
 
 // Limiter is the interface implemented by rate limiters.

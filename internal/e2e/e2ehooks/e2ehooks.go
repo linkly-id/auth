@@ -11,9 +11,9 @@ import (
 	"slices"
 	"sync"
 
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/e2e/e2eapi"
-	"github.com/supabase/auth/internal/hooks/v0hooks"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/e2e/e2eapi"
+	"github.com/linkly-id/auth/internal/hooks/v0hooks"
 )
 
 type Instance struct {

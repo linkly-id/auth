@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/gofrs/uuid"
+	"github.com/linkly-id/auth/internal/conf"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/conf"
 )
 
 type TestUser struct {

@@ -12,12 +12,12 @@ import (
 	"net/url"
 
 	jwt "github.com/golang-jwt/jwt/v5"
-	"github.com/supabase/auth/internal/api"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/storage/test"
-	"github.com/supabase/auth/internal/utilities"
+	"github.com/linkly-id/auth/internal/api"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/storage/test"
+	"github.com/linkly-id/auth/internal/utilities"
 )
 
 type Instance struct {
@@ -122,7 +122,7 @@ func (o *Instance) doAdmin(
 	tok := jwt.NewWithClaims(
 		jwt.SigningMethodHS256,
 		&api.AccessTokenClaims{
-			Role: "supabase_admin",
+			Role: "linkly_admin",
 		},
 	)
 
@@ -180,7 +180,7 @@ func do(
 
 	h := httpReq.Header
 	h.Add("X-Client-Info", "auth-go/v1.0.0")
-	h.Add("X-Supabase-Api-Version", "2024-01-01")
+	h.Add("X-Linkly-Api-Version", "2024-01-01")
 	h.Add("Content-Type", "application/json")
 	h.Add("Accept", "application/json")
 

@@ -10,16 +10,16 @@ import (
 	"time"
 
 	"github.com/fatih/structs"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/api/provider"
+	"github.com/linkly-id/auth/internal/api/sms_provider"
+	"github.com/linkly-id/auth/internal/crypto"
+	mail "github.com/linkly-id/auth/internal/mailer"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/observability"
+	"github.com/linkly-id/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/utilities"
 	"github.com/sethvargo/go-password/password"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/provider"
-	"github.com/supabase/auth/internal/api/sms_provider"
-	"github.com/supabase/auth/internal/crypto"
-	mail "github.com/supabase/auth/internal/mailer"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/observability"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/utilities"
 )
 
 const (

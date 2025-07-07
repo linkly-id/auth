@@ -6,10 +6,10 @@ import (
 	"net/url"
 	"testing"
 
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/models"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/models"
 )
 
 type ExternalTestSuite struct {
@@ -91,7 +91,7 @@ func performPKCEAuthorizationRequest(ts *ExternalTestSuite, provider, codeChalle
 	}
 
 	req := httptest.NewRequest(http.MethodGet, authorizeURL, nil)
-	req.Header.Set("Referer", "https://example.supabase.com/admin")
+	req.Header.Set("Referer", "https://example.linkly.id/admin")
 	w := httptest.NewRecorder()
 	ts.API.handler.ServeHTTP(w, req)
 	return w
