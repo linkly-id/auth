@@ -240,7 +240,7 @@ func TestValidateEmailExtended(t *testing.T) {
 		// various invalid emails
 		{email: "test@test.localhost", err: "invalid_email_dns"},
 		{email: "test@invalid.example.com", err: "invalid_email_dns"},
-		{email: "test@no.such.email.host.linkly.io", err: "invalid_email_dns"},
+		{email: "test@no.such.email.host.linkly.xxx", err: "invalid_email_dns"},
 
 		// test blocked mx records
 		{email: "test@hotmail.com", err: "invalid_email_mx"},
