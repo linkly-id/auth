@@ -8,6 +8,7 @@ import (
 
 	"github.com/linkly-id/auth/internal/api/apierrors"
 	"github.com/linkly-id/auth/internal/api/provider"
+	"github.com/linkly-id/auth/internal/metering"
 	"github.com/linkly-id/auth/internal/models"
 	"github.com/linkly-id/auth/internal/storage"
 	"github.com/linkly-id/auth/internal/utilities"
@@ -137,7 +138,7 @@ func (a *API) web3GrantSolana(ctx context.Context, w http.ResponseWriter, r *htt
 			return terr
 		}
 
-		if terr := models.NewAuditLogEntry(r, tx, user, models.LoginAction, "", map[string]interface{}{
+		if terr := models.NewAuditLogEntry(config.AuditLog, r, tx, user, models.LoginAction, "", map[string]interface{}{
 			"provider": providerType,
 			"chain":    params.Chain,
 			"network":  parsedMessage.ChainID,
@@ -166,6 +167,17 @@ func (a *API) web3GrantSolana(ctx context.Context, w http.ResponseWriter, r *htt
 			return apierrors.NewOAuthError("server_error", "Internal Server Error").WithInternalError(err)
 		}
 	}
+
+	// Record login for analytics with Web3 context
+	metering.RecordLogin(metering.LoginTypeWeb3, token.User.ID, &metering.LoginData{
+		Web3: &metering.Web3Data{
+			Chain:   params.Chain,
+			Network: parsedMessage.ChainID,
+			Address: parsedMessage.Address,
+			Domain:  parsedMessage.Domain,
+			URI:     parsedMessage.URI.String(),
+		},
+	})
 
 	return sendJSON(w, http.StatusOK, token)
 }
