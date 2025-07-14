@@ -11,7 +11,6 @@ import (
 	"github.com/fatih/structs"
 	"github.com/gofrs/uuid"
 	jwt "github.com/golang-jwt/jwt/v5"
-	"github.com/sirupsen/logrus"
 	"github.com/linkly-id/auth/internal/api/apierrors"
 	"github.com/linkly-id/auth/internal/api/provider"
 	"github.com/linkly-id/auth/internal/conf"
@@ -20,6 +19,7 @@ import (
 	"github.com/linkly-id/auth/internal/observability"
 	"github.com/linkly-id/auth/internal/storage"
 	"github.com/linkly-id/auth/internal/utilities"
+	"github.com/sirupsen/logrus"
 	"golang.org/x/oauth2"
 )
 
