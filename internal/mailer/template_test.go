@@ -43,8 +43,8 @@ func TestTemplateHeaders(t *testing.T) {
 			from: `{"X-Test-A": ["test-a", "test-b"], "X-Test-B": ["test-c", "abc $messageType"], "x-linkly-project-ref": ["abcjrhohrqmvcpjpsyzc"]}`,
 			typ:  "OTHER-TYPE",
 			exp: map[string][]string{
-				"X-Test-A":               {"test-a", "test-b"},
-				"X-Test-B":               {"test-c", "abc OTHER-TYPE"},
+				"X-Test-A":             {"test-a", "test-b"},
+				"X-Test-B":             {"test-c", "abc OTHER-TYPE"},
 				"x-linkly-project-ref": {"abcjrhohrqmvcpjpsyzc"},
 			},
 		},

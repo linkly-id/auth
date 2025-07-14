@@ -853,8 +853,6 @@ func loadGlobal(config *GlobalConfiguration) error {
 		return err
 	}
 
-	fmt.Println(config)
-
 	if err := config.ApplyDefaults(); err != nil {
 		return err
 	}
