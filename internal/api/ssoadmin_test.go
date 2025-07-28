@@ -12,12 +12,12 @@ import (
 	"time"
 
 	"github.com/crewjam/saml"
+	"github.com/linkly-id/auth/internal/api"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/e2e"
+	"github.com/linkly-id/auth/internal/e2e/e2eapi"
+	"github.com/linkly-id/auth/internal/models"
 	"github.com/stretchr/testify/require"
-	"github.com/supabase/auth/internal/api"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/e2e"
-	"github.com/supabase/auth/internal/e2e/e2eapi"
-	"github.com/supabase/auth/internal/models"
 )
 
 const testMetadataXMLTemplate = `<?xml version="1.0" encoding="UTF-8"?><md:EntityDescriptor entityID="http://%[1]s.local/entityid" xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"><md:IDPSSODescriptor WantAuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"><md:KeyDescriptor use="signing"><ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:X509Data><ds:X509Certificate>MIIDqjCCApKgAwIBAgIGAZfq8svbMA0GCSqGSIb3DQEBCwUAMIGVMQswCQYDVQQGEwJVUzETMBEG
