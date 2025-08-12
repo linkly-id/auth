@@ -7,10 +7,10 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/api/shared"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/observability"
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/api/shared"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/observability"
 )
 
 // OAuthServerClientResponse represents the response format for OAuth client operations

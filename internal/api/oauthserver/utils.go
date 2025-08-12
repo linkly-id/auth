@@ -3,7 +3,7 @@ package oauthserver
 import (
 	"context"
 
-	"github.com/supabase/auth/internal/models"
+	"github.com/linkly-id/auth/internal/models"
 )
 
 // Context keys for OAuth server functionality

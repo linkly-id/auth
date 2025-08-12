@@ -4,13 +4,13 @@ import (
 	"context"
 	"testing"
 
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/storage/test"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
-	"github.com/supabase/auth/internal/storage/test"
 )
 
 const serviceTestConfig = "../../../hack/test.env"

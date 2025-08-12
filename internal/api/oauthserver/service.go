@@ -6,11 +6,11 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/linkly-id/auth/internal/api/apierrors"
+	"github.com/linkly-id/auth/internal/crypto"
+	"github.com/linkly-id/auth/internal/models"
+	"github.com/linkly-id/auth/internal/storage"
 	"github.com/pkg/errors"
-	"github.com/supabase/auth/internal/api/apierrors"
-	"github.com/supabase/auth/internal/crypto"
-	"github.com/supabase/auth/internal/models"
-	"github.com/supabase/auth/internal/storage"
 	"golang.org/x/crypto/bcrypt"
 )
 

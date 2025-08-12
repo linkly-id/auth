@@ -5,10 +5,10 @@ import (
 	"slices"
 	"testing"
 
+	"github.com/gofrs/uuid"
 	"github.com/linkly-id/auth/internal/conf"
 	"github.com/linkly-id/auth/internal/storage"
 	"github.com/linkly-id/auth/internal/storage/test"
-	"github.com/gofrs/uuid"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 )

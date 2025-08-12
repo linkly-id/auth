@@ -1,8 +1,8 @@
 package oauthserver
 
 import (
-	"github.com/supabase/auth/internal/conf"
-	"github.com/supabase/auth/internal/storage"
+	"github.com/linkly-id/auth/internal/conf"
+	"github.com/linkly-id/auth/internal/storage"
 )
 
 // Server represents the OAuth 2.1 server functionality
