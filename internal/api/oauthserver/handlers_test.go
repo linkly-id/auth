@@ -8,13 +8,13 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
-	"github.com/stretchr/testify/suite"
 	"github.com/linkly-id/auth/internal/conf"
 	"github.com/linkly-id/auth/internal/models"
 	"github.com/linkly-id/auth/internal/storage"
 	"github.com/linkly-id/auth/internal/storage/test"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"github.com/stretchr/testify/suite"
 )
 
 const oauthServerTestConfig = "../../../hack/test.env"
